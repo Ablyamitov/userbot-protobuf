@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package userbot;
+
+option go_package = "/userbotpb";
+
+service UserbotService {
+  rpc GetChannelByUsername (GetChannelRequest) returns (ChannelResponse);
+  rpc GetMessagesFromChannel (MessagesRequest) returns (MessagesResponse);
+  rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
+}
+
+message GetChannelRequest {
+  string username = 1;
+}
+
+message ChannelResponse {
+  int64 chat_id = 1;
+  string username = 2;
+  string title = 3;
+  int64 access_hash = 4;
+}
+
+message MessagesRequest {
+  int64 chat_id = 1;
+  int64 access_hash = 2;
+  int32 limit = 3;
+}
+
+message MessagesResponse {
+  repeated Message messages = 1;
+}
+
+message Message {
+  int64 message_id = 1;
+  string text = 2;
+  int64 date = 3;
+}
+
+message SendMessageRequest {
+  int64 chat_id = 1;
+  int64 access_hash = 2;
+  string text = 3;
+}
+
+message SendMessageResponse {
+  bool success = 1;
+}
