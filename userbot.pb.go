@@ -135,9 +135,8 @@ func (x *ChannelResponse) GetAccessHash() int64 {
 
 type MessagesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        int64                  `protobuf:"varint,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
-	AccessHash    int64                  `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
-	Limit         int32                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -172,18 +171,11 @@ func (*MessagesRequest) Descriptor() ([]byte, []int) {
 	return file_userbot_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MessagesRequest) GetChatId() int64 {
+func (x *MessagesRequest) GetUsername() string {
 	if x != nil {
-		return x.ChatId
+		return x.Username
 	}
-	return 0
-}
-
-func (x *MessagesRequest) GetAccessHash() int64 {
-	if x != nil {
-		return x.AccessHash
-	}
-	return 0
+	return ""
 }
 
 func (x *MessagesRequest) GetLimit() int32 {
@@ -299,9 +291,8 @@ func (x *Message) GetDate() int64 {
 
 type SendMessageRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        int64                  `protobuf:"varint,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
-	AccessHash    int64                  `protobuf:"varint,2,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
-	Text          string                 `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	Text          string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -336,18 +327,11 @@ func (*SendMessageRequest) Descriptor() ([]byte, []int) {
 	return file_userbot_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *SendMessageRequest) GetChatId() int64 {
+func (x *SendMessageRequest) GetUsername() string {
 	if x != nil {
-		return x.ChatId
+		return x.Username
 	}
-	return 0
-}
-
-func (x *SendMessageRequest) GetAccessHash() int64 {
-	if x != nil {
-		return x.AccessHash
-	}
-	return 0
+	return ""
 }
 
 func (x *SendMessageRequest) GetText() string {
@@ -413,24 +397,20 @@ const file_userbot_proto_rawDesc = "" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
 	"\x05title\x18\x03 \x01(\tR\x05title\x12\x1f\n" +
 	"\vaccess_hash\x18\x04 \x01(\x03R\n" +
-	"accessHash\"a\n" +
-	"\x0fMessagesRequest\x12\x17\n" +
-	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x1f\n" +
-	"\vaccess_hash\x18\x02 \x01(\x03R\n" +
-	"accessHash\x12\x14\n" +
-	"\x05limit\x18\x03 \x01(\x05R\x05limit\"@\n" +
+	"accessHash\"C\n" +
+	"\x0fMessagesRequest\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\"@\n" +
 	"\x10MessagesResponse\x12,\n" +
 	"\bmessages\x18\x01 \x03(\v2\x10.userbot.MessageR\bmessages\"P\n" +
 	"\aMessage\x12\x1d\n" +
 	"\n" +
 	"message_id\x18\x01 \x01(\x03R\tmessageId\x12\x12\n" +
 	"\x04text\x18\x02 \x01(\tR\x04text\x12\x12\n" +
-	"\x04date\x18\x03 \x01(\x03R\x04date\"b\n" +
-	"\x12SendMessageRequest\x12\x17\n" +
-	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x1f\n" +
-	"\vaccess_hash\x18\x02 \x01(\x03R\n" +
-	"accessHash\x12\x12\n" +
-	"\x04text\x18\x03 \x01(\tR\x04text\"/\n" +
+	"\x04date\x18\x03 \x01(\x03R\x04date\"D\n" +
+	"\x12SendMessageRequest\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\"/\n" +
 	"\x13SendMessageResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess2\xf7\x01\n" +
 	"\x0eUserbotService\x12L\n" +
