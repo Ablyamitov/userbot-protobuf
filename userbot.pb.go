@@ -21,118 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GetChannelRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetChannelRequest) Reset() {
-	*x = GetChannelRequest{}
-	mi := &file_userbot_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetChannelRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetChannelRequest) ProtoMessage() {}
-
-func (x *GetChannelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_userbot_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetChannelRequest.ProtoReflect.Descriptor instead.
-func (*GetChannelRequest) Descriptor() ([]byte, []int) {
-	return file_userbot_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *GetChannelRequest) GetUsername() string {
-	if x != nil {
-		return x.Username
-	}
-	return ""
-}
-
-type ChannelResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ChatId        int64                  `protobuf:"varint,1,opt,name=chat_id,json=chatId,proto3" json:"chat_id,omitempty"`
-	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
-	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	AccessHash    int64                  `protobuf:"varint,4,opt,name=access_hash,json=accessHash,proto3" json:"access_hash,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ChannelResponse) Reset() {
-	*x = ChannelResponse{}
-	mi := &file_userbot_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ChannelResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ChannelResponse) ProtoMessage() {}
-
-func (x *ChannelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_userbot_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ChannelResponse.ProtoReflect.Descriptor instead.
-func (*ChannelResponse) Descriptor() ([]byte, []int) {
-	return file_userbot_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *ChannelResponse) GetChatId() int64 {
-	if x != nil {
-		return x.ChatId
-	}
-	return 0
-}
-
-func (x *ChannelResponse) GetUsername() string {
-	if x != nil {
-		return x.Username
-	}
-	return ""
-}
-
-func (x *ChannelResponse) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *ChannelResponse) GetAccessHash() int64 {
-	if x != nil {
-		return x.AccessHash
-	}
-	return 0
-}
-
 type MessagesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
@@ -143,7 +31,7 @@ type MessagesRequest struct {
 
 func (x *MessagesRequest) Reset() {
 	*x = MessagesRequest{}
-	mi := &file_userbot_proto_msgTypes[2]
+	mi := &file_userbot_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -155,7 +43,7 @@ func (x *MessagesRequest) String() string {
 func (*MessagesRequest) ProtoMessage() {}
 
 func (x *MessagesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_userbot_proto_msgTypes[2]
+	mi := &file_userbot_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -168,7 +56,7 @@ func (x *MessagesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessagesRequest.ProtoReflect.Descriptor instead.
 func (*MessagesRequest) Descriptor() ([]byte, []int) {
-	return file_userbot_proto_rawDescGZIP(), []int{2}
+	return file_userbot_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *MessagesRequest) GetUsername() string {
@@ -194,7 +82,7 @@ type MessagesResponse struct {
 
 func (x *MessagesResponse) Reset() {
 	*x = MessagesResponse{}
-	mi := &file_userbot_proto_msgTypes[3]
+	mi := &file_userbot_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -206,7 +94,7 @@ func (x *MessagesResponse) String() string {
 func (*MessagesResponse) ProtoMessage() {}
 
 func (x *MessagesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_userbot_proto_msgTypes[3]
+	mi := &file_userbot_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -219,7 +107,7 @@ func (x *MessagesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MessagesResponse.ProtoReflect.Descriptor instead.
 func (*MessagesResponse) Descriptor() ([]byte, []int) {
-	return file_userbot_proto_rawDescGZIP(), []int{3}
+	return file_userbot_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *MessagesResponse) GetMessages() []*Message {
@@ -240,7 +128,7 @@ type Message struct {
 
 func (x *Message) Reset() {
 	*x = Message{}
-	mi := &file_userbot_proto_msgTypes[4]
+	mi := &file_userbot_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -252,7 +140,7 @@ func (x *Message) String() string {
 func (*Message) ProtoMessage() {}
 
 func (x *Message) ProtoReflect() protoreflect.Message {
-	mi := &file_userbot_proto_msgTypes[4]
+	mi := &file_userbot_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -265,7 +153,7 @@ func (x *Message) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Message.ProtoReflect.Descriptor instead.
 func (*Message) Descriptor() ([]byte, []int) {
-	return file_userbot_proto_rawDescGZIP(), []int{4}
+	return file_userbot_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Message) GetMessageId() int64 {
@@ -299,7 +187,7 @@ type SendMessageRequest struct {
 
 func (x *SendMessageRequest) Reset() {
 	*x = SendMessageRequest{}
-	mi := &file_userbot_proto_msgTypes[5]
+	mi := &file_userbot_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -311,7 +199,7 @@ func (x *SendMessageRequest) String() string {
 func (*SendMessageRequest) ProtoMessage() {}
 
 func (x *SendMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_userbot_proto_msgTypes[5]
+	mi := &file_userbot_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -324,7 +212,7 @@ func (x *SendMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendMessageRequest.ProtoReflect.Descriptor instead.
 func (*SendMessageRequest) Descriptor() ([]byte, []int) {
-	return file_userbot_proto_rawDescGZIP(), []int{5}
+	return file_userbot_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SendMessageRequest) GetUsername() string {
@@ -350,7 +238,7 @@ type SendMessageResponse struct {
 
 func (x *SendMessageResponse) Reset() {
 	*x = SendMessageResponse{}
-	mi := &file_userbot_proto_msgTypes[6]
+	mi := &file_userbot_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -362,7 +250,7 @@ func (x *SendMessageResponse) String() string {
 func (*SendMessageResponse) ProtoMessage() {}
 
 func (x *SendMessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_userbot_proto_msgTypes[6]
+	mi := &file_userbot_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -375,7 +263,7 @@ func (x *SendMessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendMessageResponse.ProtoReflect.Descriptor instead.
 func (*SendMessageResponse) Descriptor() ([]byte, []int) {
-	return file_userbot_proto_rawDescGZIP(), []int{6}
+	return file_userbot_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SendMessageResponse) GetSuccess() bool {
@@ -389,15 +277,7 @@ var File_userbot_proto protoreflect.FileDescriptor
 
 const file_userbot_proto_rawDesc = "" +
 	"\n" +
-	"\ruserbot.proto\x12\auserbot\"/\n" +
-	"\x11GetChannelRequest\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\"}\n" +
-	"\x0fChannelResponse\x12\x17\n" +
-	"\achat_id\x18\x01 \x01(\x03R\x06chatId\x12\x1a\n" +
-	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
-	"\x05title\x18\x03 \x01(\tR\x05title\x12\x1f\n" +
-	"\vaccess_hash\x18\x04 \x01(\x03R\n" +
-	"accessHash\"C\n" +
+	"\ruserbot.proto\x12\auserbot\"C\n" +
 	"\x0fMessagesRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\"@\n" +
@@ -412,10 +292,9 @@ const file_userbot_proto_rawDesc = "" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x12\n" +
 	"\x04text\x18\x02 \x01(\tR\x04text\"/\n" +
 	"\x13SendMessageResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xf7\x01\n" +
-	"\x0eUserbotService\x12L\n" +
-	"\x14GetChannelByUsername\x12\x1a.userbot.GetChannelRequest\x1a\x18.userbot.ChannelResponse\x12M\n" +
-	"\x16GetMessagesFromChannel\x12\x18.userbot.MessagesRequest\x1a\x19.userbot.MessagesResponse\x12H\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\x9e\x01\n" +
+	"\x0eUserbotService\x12B\n" +
+	"\vGetMessages\x12\x18.userbot.MessagesRequest\x1a\x19.userbot.MessagesResponse\x12H\n" +
 	"\vSendMessage\x12\x1b.userbot.SendMessageRequest\x1a\x1c.userbot.SendMessageResponseB\fZ\n" +
 	"/userbotpbb\x06proto3"
 
@@ -431,26 +310,22 @@ func file_userbot_proto_rawDescGZIP() []byte {
 	return file_userbot_proto_rawDescData
 }
 
-var file_userbot_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_userbot_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_userbot_proto_goTypes = []any{
-	(*GetChannelRequest)(nil),   // 0: userbot.GetChannelRequest
-	(*ChannelResponse)(nil),     // 1: userbot.ChannelResponse
-	(*MessagesRequest)(nil),     // 2: userbot.MessagesRequest
-	(*MessagesResponse)(nil),    // 3: userbot.MessagesResponse
-	(*Message)(nil),             // 4: userbot.Message
-	(*SendMessageRequest)(nil),  // 5: userbot.SendMessageRequest
-	(*SendMessageResponse)(nil), // 6: userbot.SendMessageResponse
+	(*MessagesRequest)(nil),     // 0: userbot.MessagesRequest
+	(*MessagesResponse)(nil),    // 1: userbot.MessagesResponse
+	(*Message)(nil),             // 2: userbot.Message
+	(*SendMessageRequest)(nil),  // 3: userbot.SendMessageRequest
+	(*SendMessageResponse)(nil), // 4: userbot.SendMessageResponse
 }
 var file_userbot_proto_depIdxs = []int32{
-	4, // 0: userbot.MessagesResponse.messages:type_name -> userbot.Message
-	0, // 1: userbot.UserbotService.GetChannelByUsername:input_type -> userbot.GetChannelRequest
-	2, // 2: userbot.UserbotService.GetMessagesFromChannel:input_type -> userbot.MessagesRequest
-	5, // 3: userbot.UserbotService.SendMessage:input_type -> userbot.SendMessageRequest
-	1, // 4: userbot.UserbotService.GetChannelByUsername:output_type -> userbot.ChannelResponse
-	3, // 5: userbot.UserbotService.GetMessagesFromChannel:output_type -> userbot.MessagesResponse
-	6, // 6: userbot.UserbotService.SendMessage:output_type -> userbot.SendMessageResponse
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
+	2, // 0: userbot.MessagesResponse.messages:type_name -> userbot.Message
+	0, // 1: userbot.UserbotService.GetMessages:input_type -> userbot.MessagesRequest
+	3, // 2: userbot.UserbotService.SendMessage:input_type -> userbot.SendMessageRequest
+	1, // 3: userbot.UserbotService.GetMessages:output_type -> userbot.MessagesResponse
+	4, // 4: userbot.UserbotService.SendMessage:output_type -> userbot.SendMessageResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -467,7 +342,7 @@ func file_userbot_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_userbot_proto_rawDesc), len(file_userbot_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -19,17 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserbotService_GetChannelByUsername_FullMethodName   = "/userbot.UserbotService/GetChannelByUsername"
-	UserbotService_GetMessagesFromChannel_FullMethodName = "/userbot.UserbotService/GetMessagesFromChannel"
-	UserbotService_SendMessage_FullMethodName            = "/userbot.UserbotService/SendMessage"
+	UserbotService_GetMessages_FullMethodName = "/userbot.UserbotService/GetMessages"
+	UserbotService_SendMessage_FullMethodName = "/userbot.UserbotService/SendMessage"
 )
 
 // UserbotServiceClient is the client API for UserbotService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserbotServiceClient interface {
-	GetChannelByUsername(ctx context.Context, in *GetChannelRequest, opts ...grpc.CallOption) (*ChannelResponse, error)
-	GetMessagesFromChannel(ctx context.Context, in *MessagesRequest, opts ...grpc.CallOption) (*MessagesResponse, error)
+	GetMessages(ctx context.Context, in *MessagesRequest, opts ...grpc.CallOption) (*MessagesResponse, error)
 	SendMessage(ctx context.Context, in *SendMessageRequest, opts ...grpc.CallOption) (*SendMessageResponse, error)
 }
 
@@ -41,20 +39,10 @@ func NewUserbotServiceClient(cc grpc.ClientConnInterface) UserbotServiceClient {
 	return &userbotServiceClient{cc}
 }
 
-func (c *userbotServiceClient) GetChannelByUsername(ctx context.Context, in *GetChannelRequest, opts ...grpc.CallOption) (*ChannelResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ChannelResponse)
-	err := c.cc.Invoke(ctx, UserbotService_GetChannelByUsername_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userbotServiceClient) GetMessagesFromChannel(ctx context.Context, in *MessagesRequest, opts ...grpc.CallOption) (*MessagesResponse, error) {
+func (c *userbotServiceClient) GetMessages(ctx context.Context, in *MessagesRequest, opts ...grpc.CallOption) (*MessagesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MessagesResponse)
-	err := c.cc.Invoke(ctx, UserbotService_GetMessagesFromChannel_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, UserbotService_GetMessages_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -75,8 +63,7 @@ func (c *userbotServiceClient) SendMessage(ctx context.Context, in *SendMessageR
 // All implementations must embed UnimplementedUserbotServiceServer
 // for forward compatibility.
 type UserbotServiceServer interface {
-	GetChannelByUsername(context.Context, *GetChannelRequest) (*ChannelResponse, error)
-	GetMessagesFromChannel(context.Context, *MessagesRequest) (*MessagesResponse, error)
+	GetMessages(context.Context, *MessagesRequest) (*MessagesResponse, error)
 	SendMessage(context.Context, *SendMessageRequest) (*SendMessageResponse, error)
 	mustEmbedUnimplementedUserbotServiceServer()
 }
@@ -88,11 +75,8 @@ type UserbotServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedUserbotServiceServer struct{}
 
-func (UnimplementedUserbotServiceServer) GetChannelByUsername(context.Context, *GetChannelRequest) (*ChannelResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetChannelByUsername not implemented")
-}
-func (UnimplementedUserbotServiceServer) GetMessagesFromChannel(context.Context, *MessagesRequest) (*MessagesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMessagesFromChannel not implemented")
+func (UnimplementedUserbotServiceServer) GetMessages(context.Context, *MessagesRequest) (*MessagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMessages not implemented")
 }
 func (UnimplementedUserbotServiceServer) SendMessage(context.Context, *SendMessageRequest) (*SendMessageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendMessage not implemented")
@@ -118,38 +102,20 @@ func RegisterUserbotServiceServer(s grpc.ServiceRegistrar, srv UserbotServiceSer
 	s.RegisterService(&UserbotService_ServiceDesc, srv)
 }
 
-func _UserbotService_GetChannelByUsername_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetChannelRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserbotServiceServer).GetChannelByUsername(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserbotService_GetChannelByUsername_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserbotServiceServer).GetChannelByUsername(ctx, req.(*GetChannelRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserbotService_GetMessagesFromChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserbotService_GetMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MessagesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserbotServiceServer).GetMessagesFromChannel(ctx, in)
+		return srv.(UserbotServiceServer).GetMessages(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserbotService_GetMessagesFromChannel_FullMethodName,
+		FullMethod: UserbotService_GetMessages_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserbotServiceServer).GetMessagesFromChannel(ctx, req.(*MessagesRequest))
+		return srv.(UserbotServiceServer).GetMessages(ctx, req.(*MessagesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -180,12 +146,8 @@ var UserbotService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UserbotServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetChannelByUsername",
-			Handler:    _UserbotService_GetChannelByUsername_Handler,
-		},
-		{
-			MethodName: "GetMessagesFromChannel",
-			Handler:    _UserbotService_GetMessagesFromChannel_Handler,
+			MethodName: "GetMessages",
+			Handler:    _UserbotService_GetMessages_Handler,
 		},
 		{
 			MethodName: "SendMessage",

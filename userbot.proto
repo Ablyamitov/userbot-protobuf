@@ -5,20 +5,8 @@ package userbot;
 option go_package = "/userbotpb";
 
 service UserbotService {
-  rpc GetChannelByUsername (GetChannelRequest) returns (ChannelResponse);
-  rpc GetMessagesFromChannel (MessagesRequest) returns (MessagesResponse);
+  rpc GetMessages (MessagesRequest) returns (MessagesResponse);
   rpc SendMessage (SendMessageRequest) returns (SendMessageResponse);
-}
-
-message GetChannelRequest {
-  string username = 1;
-}
-
-message ChannelResponse {
-  int64 chat_id = 1;
-  string username = 2;
-  string title = 3;
-  int64 access_hash = 4;
 }
 
 message MessagesRequest {
